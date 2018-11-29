@@ -3,10 +3,9 @@ import $ from 'jquery';
 window.jQuery = $;
 window.$ = $;
 
+// Example for modules
 import {sayhello} from "./modules/sayhello";
 
 $(function(){
-    sayhello();
+    sayhello('Bo');
 });
-
-console.log('Hello');
