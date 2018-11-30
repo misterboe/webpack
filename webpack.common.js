@@ -2,8 +2,12 @@ const path = require('path');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const WebpackBar = require('webpackbar');
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
+
 
 module.exports = {
+    stats: 'none',
     entry: ['./Assets/Sass/style.scss', './Assets/JavaScripts/main.js'],
     output: {
         path: path.resolve(__dirname, 'Dist'),
@@ -63,6 +67,8 @@ module.exports = {
         ]
     },
     plugins: [
+        new WebpackBar(),
+        new FriendlyErrorsWebpackPlugin(),
         new MiniCssExtractPlugin({
             filename: "style.css"
         }),
