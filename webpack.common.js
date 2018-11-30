@@ -4,18 +4,26 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
-    mode: 'development',
     entry: ['./Assets/Sass/style.scss', './Assets/JavaScripts/main.js'],
-    devtool: "source-map",
     output: {
         path: path.resolve(__dirname, 'Dist'),
-        filename: 'JavaScripts/main.js',
+        filename: 'main.js',
     },
     optimization: {
         minimizer: [new UglifyJsPlugin()]
     },
     module: {
         rules: [
+            {
+                test: /\.m?js$/,
+                exclude: /(node_modules|bower_components)/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env']
+                    }
+                }
+            },
             {
                 test: /\.(sa|sc|c)ss$/,
                 use: [
@@ -28,19 +36,32 @@ module.exports = {
                             plugins: [
                                 require('autoprefixer'),
                                 require('cssnano')
-                            ]
+                            ],
                         }
                     },
                     'sass-loader',
                 ]
+            },
+            {
+                test: /\.(woff|woff2|eot|ttf|otf)$/,
+                loader: 'file-loader',
+                options: {
+                    outputPath: 'Fonts/'
+                }
+            },
+            {
+                test: /\.(png|svg|jpg|gif)$/,
+                loader: 'file-loader',
+                options: {
+                    outputPath: 'Images/'
+                }
             }
         ]
     },
     plugins: [
         new MiniCssExtractPlugin({
-            filename: "Css/style.css",
-            chunkFilename: "Css/[id].css"
+            filename: "style.css"
         }),
-        new CleanWebpackPlugin(['Dist']),
+        new CleanWebpackPlugin(['Dist'])
     ],
 };
