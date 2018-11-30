@@ -25,13 +25,16 @@ module.exports = {
                 }
             },
             {
-                test: /\.(sa|sc|c)ss$/,
+                test: /\.scss$/,
                 use: [
                     MiniCssExtractPlugin.loader,
                     'css-loader',
                     {
                         loader: 'postcss-loader',
                         options: {
+                            autoprefixer: {
+                                browsers: ["> 5%"]
+                            },
                             sourceMap: true,
                             plugins: [
                                 require('autoprefixer'),
@@ -53,6 +56,7 @@ module.exports = {
                 test: /\.(png|svg|jpg|gif)$/,
                 loader: 'file-loader',
                 options: {
+                    name: '[path][name].[ext]',
                     outputPath: 'Images/'
                 }
             }
@@ -61,6 +65,9 @@ module.exports = {
     plugins: [
         new MiniCssExtractPlugin({
             filename: "style.css"
+        }),
+        new UglifyJsPlugin({
+            extractComments: true
         }),
         new CleanWebpackPlugin(['Dist'])
     ],
