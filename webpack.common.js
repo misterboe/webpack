@@ -5,7 +5,6 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const WebpackBar = require('webpackbar');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
-
 module.exports = {
     stats: 'none',
     entry: ['./Assets/Sass/style.scss', './Assets/JavaScripts/main.js'],
@@ -67,7 +66,10 @@ module.exports = {
         ]
     },
     plugins: [
-        new WebpackBar(),
+        new WebpackBar({
+            clear: false,
+            profile: true,
+        }),
         new FriendlyErrorsWebpackPlugin(),
         new MiniCssExtractPlugin({
             filename: "style.css"
@@ -75,6 +77,8 @@ module.exports = {
         new UglifyJsPlugin({
             extractComments: true
         }),
-        new CleanWebpackPlugin(['Dist'])
+        new CleanWebpackPlugin(['Dist'], {
+            verbose: false,
+        })
     ],
 };
