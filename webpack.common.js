@@ -3,6 +3,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const WebpackBar = require('webpackbar');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
 module.exports = {
@@ -72,6 +73,14 @@ module.exports = {
         ]
     },
     plugins: [
+        new StyleLintPlugin({
+            configFile: ".stylelintrc",
+            emitErrors: false,
+            syntax: 'scss',
+            files: '**/*.scss',
+            failOnError: false,
+            quiet: false,
+        }),
         new WebpackBar({
             clear: false,
             profile: true,
