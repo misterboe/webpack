@@ -1,6 +1,6 @@
 // Example for module
 
-let sayhello = (name) => {
+const sayhello = name => {
     console.log(`Hello ` + name);
     console.log('the cake is a lie ');
     console.log('the cake is a lie ');
