@@ -10,7 +10,7 @@ module.exports = {
     stats: 'none',
     entry: ['./Assets/Sass/style.scss', './Assets/JavaScripts/main.js'],
     output: {
-        path: path.resolve(__dirname, 'Dist'),
+        path: path.resolve(__dirname, '../Dist'),
         filename: 'main.js',
     },
     optimization: {
