@@ -10,7 +10,7 @@ module.exports = {
     stats: 'none',
     entry: ['./Assets/Sass/style.scss', './Assets/JavaScripts/main.js'],
     output: {
-        path: path.resolve(__dirname, '../Dist'),
+        path: path.resolve(__dirname, 'Dist'),
         filename: 'main.js',
     },
     optimization: {
@@ -63,16 +63,43 @@ module.exports = {
                 }
             },
             {
-                test: /\.(png|svg|jpg|gif)$/,
-                loader: 'file-loader',
-                options: {
-                    name: '[path][name].[ext]',
-                    outputPath: 'Images/'
-                }
+                test: /\.(gif|png|jpe?g|svg)$/i,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[path][name].[ext]',
+                            outputPath: 'Images/'
+                        }
+                    },
+                    {
+                        loader: 'image-webpack-loader',
+                        options: {
+                            mozjpeg: {
+                                progressive: true,
+                                quality: 65
+                            },
+                            // optipng.enabled: false will disable optipng
+                            optipng: {
+                                enabled: false,
+                            },
+                            pngquant: {
+                                quality: '65-90',
+                                speed: 4
+                            },
+                            gifsicle: {
+                                interlaced: false,
+                            }
+                        }
+                    }
+                ]
             }
         ]
     },
     plugins: [
+        new CleanWebpackPlugin(['Dist'], {
+            verbose: false,
+        }),
         new StyleLintPlugin({
             configFile: ".stylelintrc",
             emitErrors: false,
@@ -91,9 +118,6 @@ module.exports = {
         }),
         new UglifyJsPlugin({
             extractComments: true
-        }),
-        new CleanWebpackPlugin(['Dist'], {
-            verbose: false,
         })
     ],
 };
