@@ -5,10 +5,11 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const WebpackBar = require('webpackbar');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
+const stylelintFormatter = require('stylelint-formatter-pretty');
 
 module.exports = {
     stats: 'none',
-    entry: ['./Assets/Sass/style.scss', './Assets/JavaScripts/main.js'],
+    entry: ['./Assets/Scss/style.scss', './Assets/JavaScripts/main.js'],
     output: {
         path: path.resolve(__dirname, 'Dist'),
         filename: 'main.js',
@@ -106,6 +107,7 @@ module.exports = {
             files: '**/*.scss',
             failOnError: false,
             quiet: false,
+            formatter: stylelintFormatter
         }),
         new WebpackBar({
             clear: false,
