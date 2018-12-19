@@ -8,7 +8,7 @@ const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
 module.exports = {
     stats: 'none',
-    entry: ['./Assets/Scss/style.scss', './Assets/JavaScripts/main.js'],
+    entry: ['./Assets/Sass/style.scss', './Assets/JavaScripts/main.js'],
     output: {
         path: path.resolve(__dirname, 'Dist'),
         filename: 'main.js',
@@ -52,7 +52,7 @@ module.exports = {
                             ],
                         }
                     },
-                    'Scss-loader',
+                    'sass-loader',
                 ]
             },
             {
