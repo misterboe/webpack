@@ -13,7 +13,7 @@ trim_trailing_whitespace = true
 # CSS-Files
 [*.css]
 indent_style = space
-indent_size = 2
+indent_size = 4
 
 # HTML-Files
 [*.html]
@@ -28,7 +28,7 @@ indent_size = 4
 # SCSS-Files
 [*.scss]
 indent_style = space
-indent_size = 2
+indent_size = 4
 
 # JS-Files
 [*.js]
