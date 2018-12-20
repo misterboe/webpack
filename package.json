@@ -33,7 +33,8 @@
     "webpack:build:dev": "./node_modules/.bin/webpack --config ./webpack.dev.js",
     "webpack:build:dev:watch": "./node_modules/.bin/webpack --config ./webpack.dev.js -d --watch",
     "webpack:build:live": "./node_modules/.bin/webpack --config ./webpack.prod.js",
-    "stylelint:fix": "./node_modules/.bin/stylelint --syntax 'scss' ./Assets/Scss/**/*.scss --fix --custom-formatter=./node_modules/stylelint-formatter-pretty || exit 0"
+    "stylelint:fix": "./node_modules/.bin/stylelint --syntax 'scss' ./Assets/Scss/**/*.scss --fix --custom-formatter=./node_modules/stylelint-formatter-pretty || exit 0",
+    "eslint:fix": "./node_modules/.bin/eslint -c ./.eslintrc.json --fix ./Assets || exit 0"
   },
   "dependencies": {
     "bootstrap": "^4.1.3",

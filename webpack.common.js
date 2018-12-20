@@ -23,6 +23,9 @@ module.exports = {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 loader: "eslint-loader",
+                options: {
+                    configFile: '.eslintrc.json'
+                }
             },
             {
                 test: /\.js$/,
