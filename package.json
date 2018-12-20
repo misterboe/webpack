@@ -22,7 +22,6 @@
     "sass-loader": "^7.1.0",
     "simple-progress-webpack-plugin": "^1.1.2",
     "stylelint": "^9.9.0",
-    "stylelint-formatter-pretty": "^1.0.3",
     "stylelint-webpack-plugin": "^0.10.5",
     "uglifyjs-webpack-plugin": "^2.0.1",
     "webpack": "^4.24.0",

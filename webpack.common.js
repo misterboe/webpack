@@ -5,7 +5,6 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const WebpackBar = require('webpackbar');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
-const stylelintFormatter = require('stylelint-formatter-pretty');
 
 module.exports = {
     stats: 'none',
@@ -107,7 +106,6 @@ module.exports = {
             files: '**/*.scss',
             failOnError: false,
             quiet: false,
-            formatter: stylelintFormatter
         }),
         new WebpackBar({
             clear: false,
