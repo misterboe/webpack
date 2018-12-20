@@ -1,7 +1,33 @@
 const merge = require('webpack-merge');
-const common = require('./webpack.common.js');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
+const baseConfig = require('./webpack.common.js');
 
-module.exports = merge(common, {
+const developConfig = {
     mode: 'development',
     devtool: "source-map",
-});
+    module: {
+        rules: [
+            {
+                enforce: "pre",
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loader: "eslint-loader",
+                options: {
+                    configFile: '.eslintrc.dev.json'
+                }
+            },
+        ]
+    },
+    plugins: [
+        new StyleLintPlugin({
+            configFile: ".stylelintrc.dev.json",
+            emitErrors: false,
+            syntax: 'scss',
+            files: '**/*.scss',
+            failOnError: false,
+            quiet: false,
+        }),
+    ]
+};
+
+module.exports = merge.smart(baseConfig, developConfig);

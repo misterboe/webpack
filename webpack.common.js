@@ -102,14 +102,6 @@ module.exports = {
         new CleanWebpackPlugin(['Dist'], {
             verbose: false,
         }),
-        new StyleLintPlugin({
-            configFile: ".stylelintrc",
-            emitErrors: false,
-            syntax: 'scss',
-            files: '**/*.scss',
-            failOnError: false,
-            quiet: false,
-        }),
         new WebpackBar({
             clear: false,
             profile: true,
