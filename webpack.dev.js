@@ -13,14 +13,14 @@ const developConfig = {
                 exclude: /node_modules/,
                 loader: "eslint-loader",
                 options: {
-                    configFile: '.eslintrc.dev.json'
+                    configFile: '.eslintrc.json'
                 }
             },
         ]
     },
     plugins: [
         new StyleLintPlugin({
-            configFile: ".stylelintrc.dev.json",
+            configFile: ".stylelintrc.json",
             emitErrors: false,
             syntax: 'scss',
             files: '**/*.scss',
