@@ -1,12 +1,13 @@
 // Example for module
 
 const sayhello = name => {
-    console.log(`Hello ` + name);
-    console.log('the cake is a lie ');
-    console.log('the cake is a lie ');
-    console.log('the cake is a lie ');
-    console.log('the cake is a lie ');
-    console.log('the cake is a lie ');
+    const Console = console;
+    Console.log(`Hello ` + name);
+    Console.log('the cake is a lie ');
+    Console.log('the cake is a lie ');
+    Console.log('the cake is a lie ');
+    Console.log('the cake is a lie ');
+    Console.log('the cake is a lie ');
 };
 
 export {sayhello};
