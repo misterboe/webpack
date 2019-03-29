@@ -4,13 +4,16 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const WebpackBar = require('webpackbar');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
+const ImageminPlugin = require('imagemin-webpack-plugin').default;
+
 
 module.exports = {
     stats: 'none',
     entry: ['./Assets/Scss/style.scss', './Assets/JavaScripts/main.js'],
     output: {
-        path: path.resolve(__dirname, 'Dist'),
+        path: path.resolve(__dirname, 'Public'),
         filename: 'main.js',
     },
     optimization: {
@@ -112,6 +115,31 @@ module.exports = {
         }),
         new UglifyJsPlugin({
             extractComments: true
+        }),
+        new CopyPlugin([
+            {from: 'Assets/Images/Misc', to: 'Images/Misc'}
+        ]),
+        new CopyPlugin([
+            {from: 'Assets/JavaScripts/static', to: 'JavaScripts'}
+        ]),
+        new ImageminPlugin({
+            test: /\.(jpe?g|png|gif|svg)$/i,
+            options: {
+                mozjpeg: {
+                    progressive: true,
+                    quality: 65
+                },
+                optipng: {
+                    enabled: false,
+                },
+                pngquant: {
+                    quality: '65-90',
+                    speed: 4
+                },
+                gifsicle: {
+                    interlaced: false,
+                }
+            }
         })
     ],
 };
