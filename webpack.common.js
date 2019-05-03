@@ -112,7 +112,7 @@ module.exports = {
         ]
     },
     plugins: [
-        new CleanWebpackPlugin(['Dist'], {
+        new CleanWebpackPlugin(['Public'], {
             verbose: false,
         }),
         new WebpackBar({
