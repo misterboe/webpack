@@ -44,7 +44,12 @@ module.exports = {
                 test: /\.scss$/,
                 use: [
                     MiniCssExtractPlugin.loader,
-                    'css-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            sourceMap: true
+                        }
+                    },
                     {
                         loader: 'postcss-loader',
                         options: {
@@ -58,7 +63,12 @@ module.exports = {
                             ],
                         }
                     },
-                    'sass-loader',
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            sourceMap: true
+                        }
+                    },
                 ]
             },
             {
@@ -102,7 +112,7 @@ module.exports = {
         ]
     },
     plugins: [
-        new CleanWebpackPlugin(['Dist'], {
+        new CleanWebpackPlugin(['Public'], {
             verbose: false,
         }),
         new WebpackBar({
