@@ -132,9 +132,10 @@ module.exports = {
         new UglifyJsPlugin({
             extractComments: true
         }),
-        new CopyPlugin([
-            {from: 'Assets/Images/Misc', to: 'Images/Misc'}
-        ]),
+        new CopyPlugin(
+            [{from: 'Assets/Images/Misc', to: 'Images/Misc'}],
+            {copyUnmodified: true}),
+        ),
         new CopyPlugin([
             {from: 'Assets/JavaScripts/static', to: 'JavaScripts'}
         ]),
